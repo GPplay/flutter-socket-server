@@ -6,7 +6,7 @@
     <title>Socket Server</title>
 </head>
 <body>
-    <H1>estoy bien aburrido de esta monda</H1>
+    <H1>Acceso denegado</H1>
 </body>
 
 <script src = "socket.io/socket.io.js"></script>
@@ -28,6 +28,9 @@
         console.log('escuchando', payload);
     })
 
+    socket.on('nuevo-mensaje', function(payload){
+        console.log('escuchando', payload);
+    })
 
 </script>
 </html>
