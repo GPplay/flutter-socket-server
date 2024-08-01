@@ -1,13 +1,25 @@
 const {io} = require('../index');
+const Heroe = require('../models/heroe');
+const Heroes = require('../models/heroes');
 
+const heroes = new Heroes();
+
+heroes.addHeroe(new Heroe('halconman'));
+heroes.addHeroe(new Heroe('tigrenman'));
+heroes.addHeroe(new Heroe('socialnman'));
+heroes.addHeroe(new Heroe('nosequenman'));
+
+console.log(heroes);
 
 //mensajes de sockets
 io.on('connection', client => {
-    console.log('Al fin se conecto alguien a esta monda perro hpta');
+    console.log('cliente conectado');
+
+    client.emit('heroes-activos', heroes.getHeroes() );
 
 
     client.on('disconnect', () => { 
-        console.log('cliente desconectado asi que abrete que tu pagina vale verga');
+        console.log('cliente desconectado');
      });
 
     client.on('mensaje', ( payload ) => {

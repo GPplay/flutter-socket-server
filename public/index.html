@@ -30,7 +30,12 @@
 
     socket.on('nuevo-mensaje', function(payload){
         console.log('escuchando', payload);
-    })
+    });
+
+    
+    socket.on('heroes-activos', function( heroes ){
+        console.log('heroes: ', heroes);
+    });
 
 </script>
 </html>
