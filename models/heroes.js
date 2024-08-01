@@ -12,7 +12,7 @@ class Heroes{
     }
 
     getHeroes(){
-        this.heroes;
+        return this.heroes;
     }
 
     deleteHeroes(id = ''){

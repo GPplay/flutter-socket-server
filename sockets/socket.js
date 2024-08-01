@@ -17,7 +17,6 @@ io.on('connection', client => {
 
     client.emit('heroes-activos', heroes.getHeroes() );
 
-
     client.on('disconnect', () => { 
         console.log('cliente desconectado');
      });
@@ -28,11 +27,17 @@ io.on('connection', client => {
         io.emit( 'mensaje', {admin: 'Gybram es el admin =D'});
     })
 
-    client.on('emitir-mensaje', (payload)=> {
-        console.log(payload);
-        //io.emit('nuevo-mensaje', payload); //emite a todos los clientes conectados
-        client.broadcast.emit('nuevo-mensaje', payload); //emite a todos menos al cliente que esta mandando el mensaje
-    })
+    client.on('vote-heroe', (payload)=> {
+
+        heroes.voteHeroe(payload.id);
+        io.emit('heroes-activos', heroes.getHeroes() );
+    });
+
+    // client.on('emitir-mensaje', (payload)=> {
+    //     console.log(payload);
+    //     io.emit('nuevo-mensaje', payload); //emite a todos los clientes conectados
+    //     client.broadcast.emit('nuevo-mensaje', payload); //emite a todos menos al cliente que esta mandando el mensaje
+    // })
 
 
 });
