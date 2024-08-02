@@ -4,10 +4,10 @@ const Heroes = require('../models/heroes');
 
 const heroes = new Heroes();
 
-heroes.addHeroe(new Heroe('halconman'));
-heroes.addHeroe(new Heroe('tigrenman'));
-heroes.addHeroe(new Heroe('socialnman'));
-heroes.addHeroe(new Heroe('nosequenman'));
+heroes.addHeroe(new Heroe('batman'));
+heroes.addHeroe(new Heroe('superman'));
+heroes.addHeroe(new Heroe('megaman'));
+heroes.addHeroe(new Heroe('wonderwoman'));
 
 console.log(heroes);
 
