@@ -7,8 +7,8 @@ class Heroes{
         this.heroes = [];
     }
 
-    addHeroe(heore = new Heroe() ){
-        this.heroes.push(heore);
+    addHeroe(heroe = new Heroe() ){
+        this.heroes.push(heroe);
     }
 
     getHeroes(){
@@ -16,15 +16,15 @@ class Heroes{
     }
 
     deleteHeroes(id = ''){
-        this.heroes.filter( heroe => heroe.id !== id);
+        this.heroes = this.heroes.filter( heroe => heroe.id !== id);
         return this.heroes;
     }
 
     voteHeroe( id  = ''){
         this.heroes = this.heroes.map(heroe => {
 
-            if(heore.id === id){
-                heore.vote++;
+            if(heroe.id === id){
+                heroe.vote++;
                 return heroe;
             }else{
                 return heroe;
