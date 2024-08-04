@@ -19,7 +19,7 @@ io.on('connection', client => {
 
     client.on('disconnect', () => { 
         console.log('cliente desconectado');
-     });
+    });
 
     client.on('mensaje', ( payload ) => {
         console.log('Mensaje!', payload);
@@ -28,9 +28,21 @@ io.on('connection', client => {
     })
 
     client.on('vote-heroe', (payload)=> {
-
         heroes.voteHeroe(payload.id);
         io.emit('heroes-activos', heroes.getHeroes() );
+    });
+
+    //escuchar el evento "add-heroe"
+
+    client.on('add-heroe', (payload)=>{
+        const newHeroe = new Heroe(payload.name);
+        heroes.addHeroe(newHeroe);
+        io.emit('heroes-activos', heroes.getHeroes());
+    });
+
+    client.on('delete-heroe', (payload)=>{
+        heroes.deleteHeroes( payload.id);
+        io.emit('heroes-activos', heroes.getHeroes());
     });
 
     // client.on('emitir-mensaje', (payload)=> {
